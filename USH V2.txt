@@ -343,3 +343,26 @@ Tab:AddButton({
       		print("button pressed")
   	end    
 })
+
+local Tab = Window:MakeTab({
+	Name = "Admin",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Infnite Yield",
+	Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+      		print("button pressed")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Nameless Admin",
+	Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))();
+      		print("button pressed")
+  	end    
+})
+
