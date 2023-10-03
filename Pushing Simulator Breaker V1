@@ -1,0 +1,184 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Pushing Simulator Breaker by Manny", "GrapeTheme")
+local Tab = Window:NewTab("Scripts")
+local Section = Tab:NewSection("Abusive, and OP shit")
+Section:NewButton("Punch", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fedoratums/Base-Script/Base-Script/fedoratum punch fling",true))()
+    print("Clicked")
+end)
+Section:NewButton("Fly", "ButtonInfo", function()
+loadstring(game:HttpGet('https://pastebin.com/raw/YSL3xKYU'))()
+    print("Clicked")
+end)
+Section:NewButton("AntiRagdoll (works in some games?)", "ButtonInfo", function()
+spawn(function()
+    while game:GetService("RunService").Heartbeat:Wait() do
+        local chr = game.Players.LocalPlayer.Character
+ 
+        for _,v in pairs(chr:GetChildren()) do
+            if v:IsA("BallSocketConstraint") or v:IsA("HingeConstraint") or v.Name == "Controls" or v.Name == "Local Ragdoll" or v.Name == "State Handler" or v.Name == "FirstPerson" or v.Name == "FakeAdmin" then
+                v:Destroy()
+            end
+        end
+    end
+end)
+    print("Clicked")
+end)
+Section:NewButton("GUI with many features", "ButtonInfo", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/shakar60/moonsecV3/main/bido.ty"))()
+    print("Clicked")
+end)
+Section:NewButton("OP GUI for Pushing Simulator (toggleable Anti ragdoll)", "ButtonInfo", function()
+do pcall(function()
+  for _,sg in pairs(game:GetService("CoreGui"):GetChildren()) do
+    if sg.Name == "ScreenGui" then
+      sg:Remove()
+    end
+  end
+ end)
+end
+
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/tV5XWC7p", true))()
+local Window = Library:CreateWindow('Pushing Simulator')
+local WS = game:GetService("Workspace")
+local PLRS = game:GetService("Players")
+local LP = PLRS.LocalPlayer
+local RS = game:GetService("ReplicatedStorage")
+local rS = game:GetService("RunService")
+local Ragdoll = RS.LocalRagdollEvent
+local RagdollToggle = false
+local Strength
+local plrs = {}
+
+for _,ppl in pairs(PLRS:GetPlayers()) do
+  table.insert(plrs, ppl.Name)
+  table.sort(plrs,
+  function(a, b)
+    return a:lower() < b:lower()
+  end)
+end
+
+PLRS.PlayerRemoving:Connect(function(plr)
+  for i,v in pairs(plrs) do
+    if v == plr.Name then
+      table.remove(plrs, i)
+      table.sort(plrs,
+      function(a, b)
+        return a:lower() < b:lower()
+      end)
+    end
+  end
+end)
+
+PLRS.PlayerAdded:Connect(function(plr)
+  table.insert(plrs, plr.Name)
+  table.sort(plrs,
+  function(a, b)
+    return a:lower() < b:lower()
+  end)
+end)
+
+Window:Section("Game Section")
+
+Window:Toggle("No Cooldown", {flag = "cooldown"})
+Window:Toggle("Anti Ragdoll", {flag = "ragdoll"}, function(a)
+  local Connection = getconnections(Ragdoll.Event)[1]
+  if not a then
+    Connection:Enable()
+  else
+    Connection:Fire()
+    Connection:Disable()
+  end
+end)
+
+Window:Toggle("Super Push", {flag = "push"})
+Window:Section("Keybind Section")
+
+Window:Bind("Ragdoll Bind", {
+   flag = "ragdollkey";
+   kbonly = true;
+   default = Enum.KeyCode.F;
+}, function()
+  RagdollToggle = not RagdollToggle
+  if RagdollToggle then
+    Ragdoll:Fire(true)
+  else
+    Ragdoll:Fire(false)
+  end
+end)
+
+rS.Heartbeat:Connect(function()
+  if Window.flags.cooldown then
+    if LP.Character:FindFirstChild("Push") then
+	    WS[LP.Name].Push.Enabled = true
+    end
+    pcall(function()
+      local CD = LP.PlayerGui:FindFirstChild("CooldownDisplay", true)
+      CD:Destroy()
+    end)
+  end
+
+  if Window.flags.push then
+    if LP.Character:FindFirstChild("Push") then
+      WS[LP.Name].Push.Enabled = true
+	    WS[LP.Name].Push.PushEvent:FireServer()
+    end
+  end
+end)
+
+LP.CharacterAdded:Connect(function()
+  wait(0.5)
+  if Window.flags.ragdoll then
+    local Connection = getconnections(Ragdoll.Event)[1]
+    Connection:Fire()
+    Connection:Disable()
+  end
+end)
+    print("Clicked")
+end)
+Section:NewButton("Auto Toxic", "ButtonInfo", function()
+getgenv().configs = {
+    whitelist = {},
+    AutoToxic = true,
+    ResponseList = {"smh get better <user>","<user> is such a noob","Imagine dying <user>","lol <user> just died","Alt F4 already <user>"}
+}
+    print("Clicked")
+end)
+Section:NewButton("OP GUI(USE FLING ALL)", "use fling all to fuck up servers!", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/i4mitty/Peruanito.exe/main/Peruanito.exe.lua"))()
+    print("Clicked")
+end)
+Section:NewButton("Invisible", "use fling all to fuck up servers!", function()
+local removeNametags = false -- remove custom billboardgui nametags from hrp, could trigger anticheat
+
+local plr = game:GetService("Players").LocalPlayer
+local character = plr.Character
+local hrp = character.HumanoidRootPart
+local old = hrp.CFrame
+
+if not character:FindFirstChild("LowerTorso") or character.PrimaryPart ~= hrp then
+return print("unsupported")
+end
+
+if removeNametags then
+local tag = hrp:FindFirstChildOfClass("BillboardGui")
+if tag then tag:Destroy() end
+
+hrp.ChildAdded:Connect(function(item)
+if item:IsA("BillboardGui") then
+task.wait()
+item:Destroy()
+end
+end)
+end
+
+local newroot = character.LowerTorso.Root:Clone()
+hrp.Parent = workspace
+character.PrimaryPart = hrp
+character:MoveTo(Vector3.new(old.X,9e9,old.Z))
+hrp.Parent = character
+task.wait(0.5)
+newroot.Parent = hrp
+hrp.CFrame = old
+    print("Clicked")
+end)
