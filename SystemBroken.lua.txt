@@ -3591,4 +3591,4 @@ end)
 
 SendNotify("System Broken","Gui developed by MalwareHub - Discord in your clipboard",10)
 setclipboard("https://discord.gg/RkhpySwNR9")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Chrome2345/idk/main/System%20Broken%20Premium"))() -- load the premium
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Chrome2345/idk/main/SystemBrokenPremium.lua%20(1).txt"))() -- load the premium
